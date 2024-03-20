@@ -1,0 +1,93 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Навыки{% endblock %}
+
+{% block content %}
+<h2>Навыки</h2>
+
+<h4>Топ 20 навыков для всех профессий (график)</h4>
+<p>Для читабельности графика отфильтрованы навыки, которые появлялись в топ 20 более 2 раз</p>
+<img src="{{ img_skills_all.image.url }}" width="100%" />
+
+<h4>Топ 20 навыков для всех профессий (таблица)</h4>
+<table class="table table-sm table-bordered">
+    <thead>
+        <tr>
+            <th class="w-25">Год</th>
+            <th class="w-75">Топ</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for year, skill_set in table_skills_all %}
+        <tr>
+            <td>{{ year }}</td>
+            <td>
+                {% if skill_set|length == 0 %}
+                Нет данных
+                {% else %}
+                <table class="table mb-0">
+                    <thead>
+                        <tr>
+                            <th>Навык</th>
+                            <th>Количество появлений в вакансиях</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for skill, count in skill_set %}
+                        <tr>
+                            <td>{{ skill }}</td>
+                            <td>{{ count }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<h4>Топ 20 навыков для QA-Инженера (график)</h4>
+<p>Для читабельности графика отфильтрованы навыки, которые появлялись в топ 20 более 2 раз</p>
+<img src="{{ img_skills_qa.image.url }}" width="100%" />
+
+<h4>Топ 20 навыков для QA-Инженера (таблица)</h4>
+<table class="table table-sm table-bordered">
+    <thead>
+        <tr>
+            <th class="w-25">Год</th>
+            <th class="w-75">Топ</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for year, skill_set in table_skills_qa %}
+        <tr>
+            <td>{{ year }}</td>
+            <td>
+                {% if skill_set|length == 0 %}
+                Нет данных
+                {% else %}
+                <table class="table mb-0">
+                    <thead>
+                        <tr>
+                            <th>Навык</th>
+                            <th>Количество появлений в вакансиях</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for skill, count in skill_set %}
+                        <tr>
+                            <td>{{ skill }}</td>
+                            <td>{{ count }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

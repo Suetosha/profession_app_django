@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static 'main/css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'main/css/main.css' %}" rel="stylesheet">
+</head>
+
+<body class="container">
+    <header class="row" >
+        <div class="d-flex align-items-center">
+            <img src="{% static 'main/img/logo.svg'%}" width="80px" alt="Лого"/>
+            <span class="display-6 lh-1 ms-1">Поиск работы</span>
+        </div>
+    </header>
+
+    <div class="row content">
+
+        <nav class="d-flex flex-column bg-light rounded-5 col-3 p-3">
+            <h3>Навигация</h3>
+            <ul class="navbar d-flex flex-column align-items-start gap-3">
+                <li class="nav-item"><a class="navbar-brand" href="{% url 'home' %}">Главная страница</a></li>
+                <li class="nav-item"><a class="navbar-brand" href="{% url 'demand' %}">Востребованность</a></li>
+                <li class="nav-item"><a class="navbar-brand" href="{% url 'geography' %}">География</a></li>
+                <li class="nav-item"><a class="navbar-brand" href="{% url 'skills' %}">Навыки</a></li>
+                <li class="nav-item"><a class="navbar-brand" href="{% url 'last_vacancies' %}">Последние вакансии</a></li>
+            </ul>
+
+            {% if not is_logged %}
+            <a class="btn btn-secondary mt-auto" href="{% url 'login' %}" role="button">Войти в аккаунт</a>
+            {% else %}
+            <a class="btn btn-secondary mt-auto" href="{% url 'logout' %}" role="button">Выйти из аккаунта</a>
+            {% endif %}
+
+        </nav>
+
+        <main class="col p-4 content overflow-y-auto">
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+
+    <footer class="row">
+        <p class="text-end m-3">Мохнаткин Даниил Антонович РИ-220912</p>
+    </footer>
+</body>
+</html>

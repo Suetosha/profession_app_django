@@ -1,0 +1,94 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}География{% endblock %}
+
+{% block content %}
+<h2>География</h2>
+<h4>Уровень зарплат по городам (регионам) для всех профессий (график)</h4>
+<p>На этапе расчета средней зарплаты брались вакансии с уровнем зарплаты от 1000 до 2_000_000 рублей</p>
+<p>Кроме того, в расчет брались только те города (регионы), количество вакансий в которых больше 10</p>
+<img src="{{ img_salary_all.image.url }}" width="100%" />
+
+<h4>Уровень зарплат по городам (регионам) для всех профессий (таблица)</h4>
+<table class="table table-sm table-bordered">
+    <thead>
+        <tr>
+            <th class="w-50">Город (регион)</th>
+            <th class="w-50">Средняя зарплата</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for city, salary in table_salary_all %}
+        <tr>
+            <td>{{ city }}</td>
+            <td>{{ salary }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<h4>Уровень зарплат по городам (регионам) для QA-Инженера (график)</h4>
+<p>На этапе расчета средней зарплаты брались вакансии с уровнем зарплаты от 1000 до 2_000_000 рублей</p>
+<p>Кроме того, в расчет брались только те города (регионы), количество вакансий в которых больше 10</p>
+<img src="{{ img_salary_qa.image.url }}" width="100%" />
+
+<h4>Уровень зарплат по городам (регионам) для QA-Инженера (таблица)</h4>
+<table class="table table-sm table-bordered">
+    <thead>
+        <tr>
+            <th class="w-50">Город (регион)</th>
+            <th class="w-50">Средняя зарплата</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for city, salary in table_salary_qa %}
+        <tr>
+            <td>{{ city }}</td>
+            <td>{{ salary }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<h4>Доля вакансий по городам (регионам) для всех профессий (график)</h4>
+<img src="{{ img_count_all.image.url }}" width="100%" />
+
+<h4>Доля вакансий по городам (регионам) для всех профессий (таблица)</h4>
+<table class="table table-sm table-bordered">
+    <thead>
+        <tr>
+            <th class="w-50">Город (регион)</th>
+            <th class="w-50">Доля вакансий</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for city, count in table_count_all %}
+        <tr>
+            <td>{{ city }}</td>
+            <td>{{ count }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<h4>Доля вакансий по городам (регионам) для QA-Инженера (график)</h4>
+<img src="{{ img_count_qa.image.url }}" width="100%" />
+
+<h4>Доля вакансий по городам (регионам) для QA-Инженера (таблица)</h4>
+<table class="table table-sm table-bordered">
+    <thead>
+        <tr>
+            <th class="w-50">Город (регион)</th>
+            <th class="w-50">Доля вакансий</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for city, count in table_count_qa %}
+        <tr>
+            <td>{{ city }}</td>
+            <td>{{ count }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

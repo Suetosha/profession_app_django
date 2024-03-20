@@ -1,0 +1,25 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Последние вакансии{% endblock %}
+
+{% block content %}
+<h3>Последние вакансии</h3>
+
+<ol>
+    {% for vacancy in vacancies %}
+    <li class="card mb-3">
+      <div class="card-body">
+          <h5 class="card-title">{{ vacancy.name }}</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Компания {{ vacancy.employer_name }}</h6>
+          <p class="card-text"><b>Оклад:</b> {{ vacancy.salary.avg_salary }} {{ vacancy.salary.currency }}</p>
+          <p class="card-text"><b>Город:</b> {{ vacancy.address }}</p>
+          <p class="card-text"><b>Дата публикации:</b> {{ vacancy.published_at }}</p>
+          <p class="card-text"><b>Навыки:</b> {{ vacancy.all_skills }}</p>
+          <p class="card-text"><b>Описание:</b> {{ vacancy.description|safe }}</p>
+          <a href="{{ vacancy.alternate_url }}" target="_blank">Ссылка на вакансию</a>
+      </div>
+    </li>
+
+    {% endfor %}
+</ol>
+{% endblock %}

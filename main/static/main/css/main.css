@@ -1,0 +1,24 @@
+body {
+    height: 100%;
+}
+
+header {
+    height: 100px;
+}
+
+footer {
+    height: 50px;
+}
+
+.content {
+    height: calc(100vh - 150px);
+}
+
+.nav-item {
+    list-style-type: none;
+}
+
+.nav-item:hover {
+    box-shadow: 8px 8px 8px #5ffad1;
+    transform:scale(1.1);
+}

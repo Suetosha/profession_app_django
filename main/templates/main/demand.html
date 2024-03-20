@@ -1,0 +1,93 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Востребованность{% endblock %}
+
+{% block content %}
+<h2>Востребованность</h2>
+
+<h4>Динамика уровня зарплат по годам для всех профессий (график)</h4>
+<p>На этапе расчета средней зарплаты брались вакансии с уровнем зарплаты от 1000 до 2_000_000 рублей</p>
+<img src="{{ img_salary_all.image.url }}" width="100%" />
+
+<h4>Динамика уровня зарплат по годам для всех профессий (таблица)</h4>
+<table class="table table-sm table-bordered">
+    <thead>
+        <tr>
+            <th class="w-50">Год</th>
+            <th class="w-50">Средняя зарплата</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for year, salary in table_salary_all %}
+        <tr>
+            <td>{{ year }}</td>
+            <td>{{ salary }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<h4>Динамика уровня зарплат по годам для QA-Инженера (график)</h4>
+<p>На этапе расчета средней зарплаты брались вакансии с уровнем зарплаты от 1000 до 2_000_000 рублей</p>
+<img src="{{ img_salary_qa.image.url }}" width="100%" />
+
+<h4>Динамика уровня зарплат по годам для QA-Инженера (таблица)</h4>
+<table class="table table-sm table-bordered">
+    <thead>
+        <tr>
+            <th class="w-50">Год</th>
+            <th class="w-50">Средняя зарплата</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for year, salary in table_salary_qa %}
+        <tr>
+            <td>{{ year }}</td>
+            <td>{{ salary }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<h4>Динамика количества вакансий по годам для всех профессий (график)</h4>
+<img src="{{ img_count_all.image.url }}" width="100%" />
+
+<h4>Динамика количества вакансий по годам для всех профессий (таблица)</h4>
+<table class="table table-sm table-bordered">
+    <thead>
+        <tr>
+            <th class="w-50">Год</th>
+            <th class="w-50">Количество вакансий</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for year, count in table_count_all %}
+        <tr>
+            <td>{{ year }}</td>
+            <td>{{ count }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<h4>Динамика количества вакансий по годам для QA-Инженера (график)</h4>
+<img src="{{ img_count_qa.image.url }}" width="100%" />
+
+<h4>Динамика количества вакансий по годам для QA-Инженера (таблица)</h4>
+<table class="table table-sm table-bordered">
+    <thead>
+        <tr>
+            <th class="w-50">Год</th>
+            <th class="w-50">Количество вакансий</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for year, count in table_count_qa %}
+        <tr>
+            <td>{{ year }}</td>
+            <td>{{ count }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

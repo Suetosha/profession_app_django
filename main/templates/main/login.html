@@ -1,0 +1,40 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Авторизация{% endblock %}
+
+{% block content %}
+
+
+    <div align="center" class="mt-5">
+        <form method="post">
+            {% csrf_token %}
+            <h3>Авторизация</h3>
+            {% for field in form %}
+                <div>
+                    <ul>
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {{ field.label_tag }}
+                    {{ field }}
+                </div>
+            {% endfor %}
+
+            <input
+                class="btn btn-secondary my-3"
+                type="submit"
+                value="Войти"
+            />
+
+        </form>
+        <a class="btn btn-secondary" href="{% url 'registration' %}" role="button">Зарегистрироваться</a>
+
+        {% for msg in messages %}
+        <p>
+            {{msg}}
+        </p>
+        {% endfor %}
+
+    </div>
+{% endblock %}
